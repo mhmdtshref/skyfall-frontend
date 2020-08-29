@@ -1,1 +1,29 @@
-<p>input works!</p>
+<mat-form-field class="example-full-width">
+    <mat-label
+    *ngIf="label"
+    >{{ label }}
+    </mat-label>
+
+    <input
+    matInput
+    [type]="type"
+    [formControl]="control"
+    [placeholder]="placeholder"
+    [readonly]="readonly"
+    />
+
+    <button
+    mat-button
+    matSuffix
+    mat-icon-button
+    *ngIf="copyAbility"
+    (click)="copyToClipboard()"
+    >
+        <mat-icon
+        #copyIcon="matTooltip"
+        matTooltip="Copied to clipboard!"
+        matTooltipPosition="above"
+        aria-tooltip="Input data copied to clipboard"
+        >content_copy</mat-icon>
+    </button>
+</mat-form-field>
