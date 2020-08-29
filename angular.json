@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "spyfall-frontend"
+    }
+  },
+  "defaultProject": "spyfall-frontend",
+  "cli": {
+    "analytics": false
+  }
 }
