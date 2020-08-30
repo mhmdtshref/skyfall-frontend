@@ -8,9 +8,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTableModule } from '@angular/material/table';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
-  declarations: [ButtonComponent, InputComponent],
+  declarations: [ButtonComponent, InputComponent, ListComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -19,10 +21,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     ClipboardModule,
     MatTooltipModule,
+    MatTableModule,
   ],
   exports: [
     ButtonComponent,
     InputComponent,
+    ListComponent,
   ],
 })
 export class SharedModule { }
