@@ -1,0 +1,22 @@
+<div>
+    <h2>{{ data.title || title }}</h2>
+    <hr/>
+    <p>{{ data.text || text }}</p>
+    <hr/>
+    <div class="d-flex justify-content-end">
+        <button
+        mat-raised-button
+        color="primary"
+        (click)="onReject()"
+        >{{ data.rejectButtonText || rejectButtonText }}
+        </button>
+
+        <button
+        mat-raised-button
+        color="warn"
+        class="ml-2"
+        (click)="onConfirm()"
+        >{{ data.confirmButtonText || confirmButtonText }}
+        </button>
+    </div>
+</div>

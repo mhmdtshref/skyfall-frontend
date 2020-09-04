@@ -10,9 +10,10 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTableModule } from '@angular/material/table';
 import { ListComponent } from './list/list.component';
+import { PopupComponent } from './popup/popup.component';
 
 @NgModule({
-  declarations: [ButtonComponent, InputComponent, ListComponent],
+  declarations: [ButtonComponent, InputComponent, ListComponent, PopupComponent],
   imports: [
     CommonModule,
     MatButtonModule,
