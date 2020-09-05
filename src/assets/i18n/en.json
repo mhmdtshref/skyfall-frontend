@@ -9,7 +9,20 @@
                 "placeholder": "Type code..",
                 "label": "Joining Code"
             },
-            "join": "Join"
+            "join": "Join",
+            "createGamePopup": {
+                "title": "Create Game",
+                "text": "What is your name?",
+                "confirm": "Create",
+                "reject": "Back",
+                "input": {
+                    "label": "Your name",
+                    "placeholder": "Type here.."
+                }
+            }
         }
+    },
+    "popupDefaults": {
+        "title": ""
     }
 }

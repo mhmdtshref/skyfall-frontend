@@ -1,19 +1,25 @@
 <div>
-    <h2>{{ data.title || title }}</h2>
+    <h2>{{ (data.title || 'popupDefaults.title') | translate }}</h2>
     <hr/>
-    <p>{{ data.text || text }}</p>
-    <spyfall-input *ngIf="data.input" [control]="inputControl" [type]="data.input.type" [placeholder]="data.input.placeholder"></spyfall-input>
+    <p>{{ (data.text || 'popupDefaults.text') | translate }}</p>
+    <spyfall-input
+    *ngIf="data.input"
+    [control]="inputControl"
+    [type]="data.input.type"
+    label="{{ data.input.label | translate }}"
+    placeholder="{{ data.input.placeholder | translate }}"
+    ></spyfall-input>
     <hr/>
     <div class="d-flex justify-content-end">
         <spyfall-button
-        [text]="data.buttons.reject.text || buttons.reject.text"
+        text="{{ (data.buttons.reject.text || 'popupDefaults.rejectText') | translate }}"
         [type]="data.buttons.reject.type"
         (clickAction)="onReject()"
         >
         </spyfall-button>
 
         <spyfall-button
-        [text]="data.buttons.confirm.text || buttons.confirm.text"
+        text="{{ (data.buttons.confirm.text || 'popupDefaults.confirmText') | translate}}"
         [type]="data.buttons.confirm.type"
         (clickAction)="onConfirm()"
         class="ml-2"

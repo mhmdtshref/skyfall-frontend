@@ -11,6 +11,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTableModule } from '@angular/material/table';
 import { ListComponent } from './list/list.component';
 import { PopupComponent } from './popup/popup.component';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [ButtonComponent, InputComponent, ListComponent, PopupComponent],
@@ -23,6 +31,14 @@ import { PopupComponent } from './popup/popup.component';
     ClipboardModule,
     MatTooltipModule,
     MatTableModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
   ],
   exports: [
     ButtonComponent,
