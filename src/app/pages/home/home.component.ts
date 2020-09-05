@@ -32,12 +32,12 @@ export class HomeComponent implements OnInit {
       buttons: {
         confirm: {
           type: 'primary',
-          // text: 'pages.home.createGamePopup.confirm',
+          text: 'pages.home.createGamePopup.confirm',
           clickAction: this.createGame,
         },
         reject: {
           type: 'basic',
-          // text: 'pages.home.createGamePopup.reject',
+          text: 'pages.home.createGamePopup.reject',
         },
       },
       input: {
