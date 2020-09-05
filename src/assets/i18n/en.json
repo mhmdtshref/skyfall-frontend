@@ -1,4 +1,15 @@
 {
     "title": "Spy Fall",
-    "intro": "Catch the spy!"
+    "pages": {
+        "home": {
+            "createGame": "Create Game",
+            "or": "Or",
+            "joinByCode": "Join by Code",
+            "codeInput": {
+                "placeholder": "Type code..",
+                "label": "Joining Code"
+            },
+            "join": "Join"
+        }
+    }
 }
