@@ -4,19 +4,19 @@
     <p>{{ data.text || text }}</p>
     <hr/>
     <div class="d-flex justify-content-end">
-        <button
-        mat-raised-button
-        [color]="data.buttons.reject.type"
-        (click)="onReject()"
-        >{{ data.buttons.reject.text || buttons.reject.text }}
-        </button>
+        <spyfall-button
+        [text]="data.buttons.reject.text || buttons.reject.text"
+        [type]="data.buttons.reject.type"
+        (clickAction)="onReject()"
+        >
+        </spyfall-button>
 
-        <button
-        mat-raised-button
-        [color]="data.buttons.confirm.type"
+        <spyfall-button
+        [text]="data.buttons.confirm.text || buttons.confirm.text"
+        [type]="data.buttons.confirm.type"
+        (clickAction)="onConfirm()"
         class="ml-2"
-        (click)="onConfirm()"
-        >{{ data.buttons.confirm.text || buttons.confirm.text }}
-        </button>
+        >
+        </spyfall-button>
     </div>
 </div>
