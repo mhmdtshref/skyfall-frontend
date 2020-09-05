@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { MatDialog as MatDialogService } from '@angular/material/dialog';
 import { PopupComponent } from 'src/app/shared/popup/popup.component';
 import { DialogData } from 'src/app/interfaces';
+// import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'spyfall-home',
   templateUrl: './home.component.html',
@@ -12,7 +14,12 @@ export class HomeComponent implements OnInit {
 
   joinCodeControl: FormControl = new FormControl();
 
-  constructor(private dialogService: MatDialogService) { }
+  constructor(
+    private dialogService: MatDialogService,
+    // private translateService: TranslateService,
+    ) {
+      // this.translateService.use()
+    }
 
   ngOnInit(): void {
   }
