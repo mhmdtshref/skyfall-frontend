@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
         },
       },
     };
-    this.dialogService.open(PopupComponent, { data });
+    this.dialogService.open(PopupComponent, { data, width: '80%' });
   }
 
   onJoinClicked = () => {
