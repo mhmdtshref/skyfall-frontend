@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from '../../interfaces';
+import { DialogData, DialogButtons } from '../../interfaces';
 
 @Component({
   selector: 'spyfall-popup',
@@ -16,19 +16,27 @@ export class PopupComponent implements OnInit {
 
   title: string = 'Confirm';
   text: string = 'Are you sure?';
-  rejectButtonText: string = 'No';
-  confirmButtonText: string = 'Yes';
+  buttons: DialogButtons = {
+    confirm: {
+      type: 'primary',
+      text: 'Submit',
+    },
+    reject: {
+      type: 'basic',
+      text: 'Back',
+    },
+  };
 
   onConfirm = () => {
-    if(this.data.confirmAction instanceof Function) {
-      this.data.confirmAction();
+    if(this.data.buttons.confirm.clickAction instanceof Function) {
+      this.data.buttons.confirm.clickAction();
     }
     this.dialogRef.close();
   }
 
   onReject = () => {
-    if(this.data.rejectAction instanceof Function) {
-      this.data.rejectAction();
+    if(this.data.buttons.reject.clickAction instanceof Function) {
+      this.data.buttons.reject.clickAction();
     }
     this.dialogRef.close();
   }

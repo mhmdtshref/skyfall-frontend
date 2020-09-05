@@ -6,17 +6,17 @@
     <div class="d-flex justify-content-end">
         <button
         mat-raised-button
-        color="primary"
+        [color]="data.buttons.reject.type"
         (click)="onReject()"
-        >{{ data.rejectButtonText || rejectButtonText }}
+        >{{ data.buttons.reject.text || buttons.reject.text }}
         </button>
 
         <button
         mat-raised-button
-        color="warn"
+        [color]="data.buttons.confirm.type"
         class="ml-2"
         (click)="onConfirm()"
-        >{{ data.confirmButtonText || confirmButtonText }}
+        >{{ data.buttons.confirm.text || buttons.confirm.text }}
         </button>
     </div>
 </div>

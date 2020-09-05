@@ -25,9 +25,17 @@ export class HomeComponent implements OnInit {
     const data: DialogData = {
       title: 'Create Game',
       text: 'What is your name?',
-      confirmButtonText: 'Create',
-      rejectButtonText: 'Back',
-      confirmAction: this.createGame,
+      buttons: {
+        confirm: {
+          type: 'primary',
+          text: 'Create',
+          clickAction: this.createGame,
+        },
+        reject: {
+          type: 'basic',
+          text: 'Back',
+        },
+      },
     };
     this.dialogService.open(PopupComponent, { data });
   }

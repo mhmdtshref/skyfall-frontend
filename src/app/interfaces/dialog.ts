@@ -1,8 +1,12 @@
+import { ButtonData } from './button';
+
 export interface DialogData {
     title: string;
     text: string;
-    rejectButtonText: string;
-    confirmButtonText: string;
-    confirmAction: Function;
-    rejectAction?: Function | null;
+    buttons: DialogButtons;
+}
+
+export interface DialogButtons {
+    confirm: ButtonData;
+    reject: ButtonData;
 }
