@@ -36,6 +36,11 @@ export class HomeComponent implements OnInit {
           text: 'Back',
         },
       },
+      input: {
+        type: 'text',
+        label: 'Youe name',
+        placeholder: 'Type here..',
+      }
     };
     this.dialogService.open(PopupComponent, { data, width: '80%' });
   }

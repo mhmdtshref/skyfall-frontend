@@ -2,6 +2,7 @@
     <h2>{{ data.title || title }}</h2>
     <hr/>
     <p>{{ data.text || text }}</p>
+    <spyfall-input *ngIf="data.input" [control]="inputControl" [type]="data.input.type" [placeholder]="data.input.placeholder"></spyfall-input>
     <hr/>
     <div class="d-flex justify-content-end">
         <spyfall-button

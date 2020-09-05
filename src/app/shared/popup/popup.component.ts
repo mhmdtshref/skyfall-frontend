@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogData, DialogButtons } from '../../interfaces';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'spyfall-popup',
@@ -26,10 +27,11 @@ export class PopupComponent implements OnInit {
       text: 'Back',
     },
   };
+  inputControl: FormControl = new FormControl();
 
   onConfirm = () => {
     if(this.data.buttons.confirm.clickAction instanceof Function) {
-      this.data.buttons.confirm.clickAction();
+      this.data.buttons.confirm.clickAction(this.data.input ? this.inputControl.value : undefined);
     }
     this.dialogRef.close();
   }

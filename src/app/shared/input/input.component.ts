@@ -49,6 +49,8 @@ export class InputComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.timerSubscriber.unsubscribe();
+    if(this.timerSubscriber) {
+      this.timerSubscriber.unsubscribe();
+    }
   }
 }
