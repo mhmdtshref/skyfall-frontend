@@ -23,6 +23,15 @@
         }
     },
     "popupDefaults": {
-        "title": ""
+        "title": "Confirm",
+        "text": "Are you sure?",
+        "buttons": {
+            "confirm": {
+                "text": "Submit"
+            },
+            "reject": {
+                "text": "Back"
+            }
+        }
     }
 }

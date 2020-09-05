@@ -12,15 +12,15 @@
     <hr/>
     <div class="d-flex justify-content-end">
         <spyfall-button
-        text="{{ (data.buttons.reject.text || 'popupDefaults.rejectText') | translate }}"
-        [type]="data.buttons.reject.type"
+        text="{{ (data.buttons.reject.text || buttons.reject.text) | translate }}"
+        [type]="data.buttons.reject.type || buttons.reject.type"
         (clickAction)="onReject()"
         >
         </spyfall-button>
 
         <spyfall-button
-        text="{{ (data.buttons.confirm.text || 'popupDefaults.confirmText') | translate}}"
-        [type]="data.buttons.confirm.type"
+        text="{{ (data.buttons.confirm.text || buttons.confirm.text) | translate}}"
+        [type]="data.buttons.confirm.type || buttons.confirm.type"
         (clickAction)="onConfirm()"
         class="ml-2"
         >

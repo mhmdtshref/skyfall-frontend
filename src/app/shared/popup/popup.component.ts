@@ -15,16 +15,16 @@ export class PopupComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) { }
 
-  title: string = 'Confirm';
-  text: string = 'Are you sure?';
+  title: string = 'popupDefaults.title';
+  text: string = 'popupDefaults.text';
   buttons: DialogButtons = {
     confirm: {
       type: 'primary',
-      text: 'Submit',
+      text: 'popupDefaults.buttons.confirm.text',
     },
     reject: {
       type: 'basic',
-      text: 'Back',
+      text: 'popupDefaults.buttons.reject.text',
     },
   };
   inputControl: FormControl = new FormControl();

@@ -1,5 +1,5 @@
 export interface ButtonData {
     type: string;
-    text: string;
+    text?: string;
     clickAction?: Function;
 }
