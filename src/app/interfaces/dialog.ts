@@ -4,5 +4,5 @@ export interface DialogData {
     rejectButtonText: string;
     confirmButtonText: string;
     confirmAction: Function;
-    rejectAction: Function | null;
+    rejectAction?: Function | null;
 }
