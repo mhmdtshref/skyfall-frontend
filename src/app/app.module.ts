@@ -9,6 +9,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PagesModule } from './pages/pages.module';
 
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +28,14 @@ import { PagesModule } from './pages/pages.module';
     BrowserAnimationsModule,
     NgbModule,
     PagesModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

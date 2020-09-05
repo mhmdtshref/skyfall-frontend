@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { SharedService } from './shared/services/shared.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'spyfall-frontend';
+
+  constructor(private translateService: TranslateService) {
+    SharedService.language = 'en';
+    translateService.setDefaultLang(SharedService.language);
+  }
+
+  updateLanguage() {
+    this.translateService.use(SharedService.language);
+  }
+
 }
