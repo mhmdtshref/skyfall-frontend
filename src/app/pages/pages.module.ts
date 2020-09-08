@@ -9,13 +9,14 @@ import { PopupComponent } from '../shared/popup/popup.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { GameComponent } from './game/game.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, GameComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
