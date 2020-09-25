@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SharedService {
 
-  public static language: string = 'en';
+  public static language = 'en';
 
   constructor() { }
 }

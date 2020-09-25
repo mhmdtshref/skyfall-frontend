@@ -25,7 +25,7 @@
     "component-selector": [
       true,
       "element",
-      "app",
+      "spyfall",
       "kebab-case"
     ],
     "eofline": true,

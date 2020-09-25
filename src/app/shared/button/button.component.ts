@@ -7,10 +7,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ButtonComponent implements OnInit {
 
   @Input()
-  type: string = 'primary';
+  type = 'primary';
 
   @Input()
-  text: string = 'Submit';
+  text = 'Submit';
 
   @Output()
   clickAction: EventEmitter<null> = new EventEmitter<null>();
@@ -18,7 +18,7 @@ export class ButtonComponent implements OnInit {
   constructor() { }
 
   onClick = () => {
-    if(this.clickAction) {
+    if (this.clickAction) {
       this.clickAction.emit();
     }
   }

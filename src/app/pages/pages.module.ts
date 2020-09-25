@@ -11,9 +11,9 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { GameComponent } from './game/game.component';
 
-export function HttpLoaderFactory(http: HttpClient) {
+export const HttpLoaderFactory = (http: HttpClient) => {
   return new TranslateHttpLoader(http);
-}
+};
 
 @NgModule({
   declarations: [HomeComponent, GameComponent],
