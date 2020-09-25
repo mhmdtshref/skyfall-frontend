@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { MatDialog as MatDialogService } from '@angular/material/dialog';
 import { PopupComponent } from 'src/app/shared/popup/popup.component';
 import { DialogData } from 'src/app/interfaces';
+import { GameService } from 'src/app/shared/services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'spyfall-home',
@@ -15,14 +17,23 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private dialogService: MatDialogService,
+    private gameService: GameService,
+    private router: Router,
     ) {
     }
 
   ngOnInit(): void {
   }
 
-  createGame = (adminName: string) => {
-    console.log('admin name is: ', adminName);
+  createGameSubmit = (adminName: string) => {
+    this.gameService.createGame(adminName)
+    .then((data: any) => {
+      const { game } = data;
+      this.router.navigate(['game']);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 
   onCreateGameClick = () => {
@@ -33,7 +44,7 @@ export class HomeComponent implements OnInit {
         confirm: {
           type: 'primary',
           text: 'pages.home.createGamePopup.confirm',
-          clickAction: this.createGame,
+          clickAction: this.createGameSubmit,
         },
         reject: {
           type: 'basic',

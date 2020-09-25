@@ -15,6 +15,10 @@ export class APIInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const urlArray = request.url.split('/');
+    if(urlArray[1] === 'assets'){
+      return next.handle(request);
+    }
     const apiReq = request.clone({ url: `${environment.baseApiUrl}/${request.url}` });
     return next.handle(apiReq);
   }
