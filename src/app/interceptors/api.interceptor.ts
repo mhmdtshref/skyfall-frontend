@@ -6,7 +6,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment'
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class APIInterceptor implements HttpInterceptor {
@@ -16,7 +16,7 @@ export class APIInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const urlArray = request.url.split('/');
-    if(urlArray[1] === 'assets'){
+    if (urlArray[1] === 'assets'){
       return next.handle(request);
     }
     const apiReq = request.clone({ url: `${environment.baseApiUrl}/${request.url}` });

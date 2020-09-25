@@ -6,7 +6,7 @@ import io from 'socket.io-client';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-root',
+  selector: 'spyfall-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
@@ -19,7 +19,7 @@ export class AppComponent {
     SocketService.socket = io(environment.baseApiUrl);
   }
 
-  updateLanguage() {
+  updateLanguage = () => {
     this.translateService.use(SharedService.language);
   }
 

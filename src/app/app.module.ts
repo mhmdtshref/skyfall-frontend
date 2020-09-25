@@ -15,9 +15,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { APIInterceptor } from './interceptors/api.interceptor';
 
 
-export function HttpLoaderFactory(http: HttpClient) {
+export const HttpLoaderFactory = (http: HttpClient) => {
   return new TranslateHttpLoader(http);
-}
+};
 
 @NgModule({
   declarations: [

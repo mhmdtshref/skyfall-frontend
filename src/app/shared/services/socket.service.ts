@@ -19,7 +19,7 @@ export class SocketService {
         return resolve(data);
       });
       setTimeout(() => {
-        if(!success) {
+        if (!success) {
           reject('Unable to create game');
         }
       }, 8000);

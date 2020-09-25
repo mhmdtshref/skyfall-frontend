@@ -15,8 +15,8 @@ export class PopupComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) { }
 
-  title: string = 'popupDefaults.title';
-  text: string = 'popupDefaults.text';
+  title = 'popupDefaults.title';
+  text = 'popupDefaults.text';
   buttons: DialogButtons = {
     confirm: {
       type: 'primary',
@@ -30,14 +30,14 @@ export class PopupComponent implements OnInit {
   inputControl: FormControl = new FormControl();
 
   onConfirm = () => {
-    if(this.data.buttons.confirm.clickAction instanceof Function) {
+    if (this.data.buttons.confirm.clickAction instanceof Function) {
       this.data.buttons.confirm.clickAction(this.data.input ? this.inputControl.value : undefined);
     }
     this.dialogRef.close();
   }
 
   onReject = () => {
-    if(this.data.buttons.reject.clickAction instanceof Function) {
+    if (this.data.buttons.reject.clickAction instanceof Function) {
       this.data.buttons.reject.clickAction();
     }
     this.dialogRef.close();

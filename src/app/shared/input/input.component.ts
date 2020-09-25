@@ -15,19 +15,19 @@ export class InputComponent implements OnInit, OnDestroy {
   label: string = null;
 
   @Input()
-  type: string = 'text';
+  type = 'text';
 
   @Input()
   control: FormControl = new FormControl();
 
   @Input()
-  placeholder: string = 'Enter';
+  placeholder = 'Enter';
 
   @Input()
-  readonly: boolean = false;
+  readonly = false;
 
   @Input()
-  copyAbility: boolean = false;
+  copyAbility = false;
 
   @ViewChild('copyIcon')
   copyIcon: MatTooltip;
@@ -35,7 +35,7 @@ export class InputComponent implements OnInit, OnDestroy {
   timerSubscriber: Subscription;
 
   constructor(private clipboard: Clipboard) { }
-  
+
 
   copyToClipboard = () => {
     this.clipboard.copy(this.control.value);
@@ -49,7 +49,7 @@ export class InputComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if(this.timerSubscriber) {
+    if (this.timerSubscriber) {
       this.timerSubscriber.unsubscribe();
     }
   }

@@ -5,7 +5,7 @@ export interface DialogData {
     title: string;
     text: string;
     buttons: DialogButtons;
-    input: InputData,
+    input: InputData;
 }
 
 export interface DialogButtons {

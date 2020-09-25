@@ -16,9 +16,9 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 
-export function HttpLoaderFactory(http: HttpClient) {
+export const HttpLoaderFactory = (http: HttpClient) => {
   return new TranslateHttpLoader(http);
-}
+};
 
 @NgModule({
   declarations: [ButtonComponent, InputComponent, ListComponent, PopupComponent],

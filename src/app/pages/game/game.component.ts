@@ -11,53 +11,53 @@ export class GameComponent implements OnInit {
 
   gameStatusEnum = E_GAME_STATUS;
 
-  isAdmin: boolean = false;
+  isAdmin = false;
   gameStatus: T_GAME_STATUS = E_GAME_STATUS.started;
 
   gameStatusLabel: T_GAME_STATUS_LABEL = E_GAME_STATUS_LABEL.waiting;
 
-  adminButtonText: string = 'Start';
-  gameCode: string = 'XY4B';
+  adminButtonText = 'Start';
+  gameCode = 'XY4B';
   linkControl: FormControl = new FormControl('https://spyfall.com/game/XY4B');
 
   players = [{ name: 'Ahmad' }, { name: 'Murad' }, { name: 'Taher' }];
   playersColumnsData = [{ name: 'name', label: 'Name' }];
 
-  leaveButtonText: string = 'End';
+  leaveButtonText = 'End';
 
-  location: string = 'Space X';
+  location = 'Space X';
 
   constructor() { }
 
-  adminButtonAction: Function = () => {
+  adminButtonAction = () => {
     console.log('ADMIN BUTTON ACTION FIRED!');
   }
 
-  leaveButtonAction: Function = () => {
+  leaveButtonAction = () => {
     console.log('LEAVE BUTTON ACTION FIRED!');
   }
 
-  setUserDetails: Function = (isAdmin: boolean) => {
-    if(isAdmin) {
+  setUserDetails = (isAdmin: boolean) => {
+    if (isAdmin) {
       this.setUserAsAdmin();
     } else {
       this.setUserAsPlayer();
     }
   }
 
-  setUserAsAdmin: Function = () => {
+  setUserAsAdmin = () => {
     this.isAdmin = true;
     this.setAdminButtonsText(this.gameStatus);
   }
 
-  setUserAsPlayer: Function = () => {
+  setUserAsPlayer = () => {
     this.isAdmin = false;
     this.setPlayerButtonsText(this.gameStatus);
     this.setPlayerHeaderTexts(this.gameStatus);
   }
 
-  setAdminButtonsText: Function = (status: T_GAME_STATUS) => {
-    if(status === E_GAME_STATUS.started) {
+  setAdminButtonsText = (status: T_GAME_STATUS) => {
+    if (status === E_GAME_STATUS.started) {
       this.adminButtonText = 'Restart';
     } else {
       this.gameStatus = E_GAME_STATUS.waiting;
@@ -66,8 +66,8 @@ export class GameComponent implements OnInit {
     this.leaveButtonText = 'End';
   }
 
-  setPlayerButtonsText: Function = (status: T_GAME_STATUS) => {
-    if(status === E_GAME_STATUS.waiting) {
+  setPlayerButtonsText = (status: T_GAME_STATUS) => {
+    if (status === E_GAME_STATUS.waiting) {
       this.leaveButtonText = 'Leave';
     } else {
       this.leaveButtonText = null;
