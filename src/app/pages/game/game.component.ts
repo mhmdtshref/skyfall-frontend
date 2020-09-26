@@ -121,7 +121,7 @@ export class GameComponent implements OnInit {
       this.setGameToLocalStorage(game);
       this.setProps();
       this.setPlayers();
-    })
+    });
   }
 
 }

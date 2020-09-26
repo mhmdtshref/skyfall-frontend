@@ -89,7 +89,7 @@ export class HomeComponent implements OnInit {
 
   onJoinGameSubmit = (playerName: string) => {
     const code = this.joinCodeControl.value;
-    console.log('CODE: ', code,' and control: ', this.joinCodeControl);
+    console.log('CODE: ', code, ' and control: ', this.joinCodeControl);
     this.gameService.joinByCode(code, playerName)
     .then((data: { game: Game, player: Player }) => {
       const { game, player } = data;
@@ -99,7 +99,7 @@ export class HomeComponent implements OnInit {
     })
     .catch((err) => {
       console.log(err);
-    })
+    });
   }
 
   setGameToLocalStorage = (game: Game) => {

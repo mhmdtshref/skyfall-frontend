@@ -13,4 +13,4 @@ export {
     InputData,
     GameLocation,
     Player,
-}
+};
