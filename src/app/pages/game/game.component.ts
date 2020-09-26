@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { E_GAME_STATUS, T_GAME_STATUS, T_GAME_STATUS_LABEL, E_GAME_STATUS_LABEL } from './game.constants';
 import { Game, Player } from '../../interfaces';
 import { environment } from 'src/environments/environment';
+import { SocketService } from 'src/app/shared/services';
 
 @Component({
   selector: 'spyfall-game',
@@ -107,10 +108,20 @@ export class GameComponent implements OnInit {
     this.players = playersList;
   }
 
+  setGameToLocalStorage = (game: Game) => {
+    window.localStorage.setItem('game', JSON.stringify(game));
+  }
+
   ngOnInit(): void {
     this.setProps();
     this.setUserDetails(this.isAdmin);
     this.setPlayers();
+    SocketService.socket.on('playerJoined', (data: { game: Game }) => {
+      const { game } = data;
+      this.setGameToLocalStorage(game);
+      this.setProps();
+      this.setPlayers();
+    })
   }
 
 }

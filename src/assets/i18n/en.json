@@ -19,6 +19,16 @@
                     "label": "Your name",
                     "placeholder": "Type here.."
                 }
+            },
+            "joinGamePopup": {
+                "title": "Join Game",
+                "text": "What is your name?",
+                "confirm": "Join",
+                "reject": "Back",
+                "input": {
+                    "label": "Your name",
+                    "placeholder": "Type here.."
+                }
             }
         }
     },

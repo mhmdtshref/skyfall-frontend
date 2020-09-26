@@ -26,4 +26,20 @@ export class SocketService {
     });
   }
 
+  emitJoinGame = (gameCode: string, playerName: string) => {
+    return new Promise((resolve, reject) => {
+      let success = false;
+      SocketService.socket.emit('joinGame', { gameCode, playerName });
+      SocketService.socket.on('joinSuccess', (data) => {
+        success = true;
+        return resolve(data);
+      });
+      setTimeout(() => {
+        if (!success) {
+          reject('Unable to join game');
+        }
+      }, 8000);
+    });
+  }
+
 }

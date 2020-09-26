@@ -13,4 +13,8 @@ export class GameService {
   createGame = (playerName) => {
     return this.socketService.emitCreateGame(playerName);
   }
+
+  joinByCode = (code: string, playerName: string) => {
+    return this.socketService.emitJoinGame(code, playerName);
+  }
 }
