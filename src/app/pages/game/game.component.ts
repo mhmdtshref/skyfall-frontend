@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { E_GAME_STATUS, T_GAME_STATUS, T_GAME_STATUS_LABEL, E_GAME_STATUS_LABEL } from './game.constants';
+import { Game, Player } from '../../interfaces';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'spyfall-game',
@@ -13,6 +15,8 @@ export class GameComponent implements OnInit {
 
   isAdmin = false;
   gameStatus: T_GAME_STATUS = E_GAME_STATUS.started;
+  game: Game;
+  player: Player;
 
   gameStatusLabel: T_GAME_STATUS_LABEL = E_GAME_STATUS_LABEL.waiting;
 
@@ -83,8 +87,30 @@ export class GameComponent implements OnInit {
     }
   }
 
+  setProps = () => {
+    const game: Game = JSON.parse(window.localStorage.getItem('game')) as Game;
+    const player: Player = JSON.parse(window.localStorage.getItem('player')) as Player;
+    const { baseApiUrl } = environment;
+
+    this.game = game;
+    this.player = player;
+    this.isAdmin = game.adminId === player.id;
+    this.gameStatus = game.status;
+    this.gameCode = game.code;
+
+    this.linkControl.setValue(`${baseApiUrl}/game/join/${game.code}`);
+  }
+
+  setPlayers = () => {
+    const { players } = this.game;
+    const playersList = players.map(player => ({ name: player.name }));
+    this.players = playersList;
+  }
+
   ngOnInit(): void {
+    this.setProps();
     this.setUserDetails(this.isAdmin);
+    this.setPlayers();
   }
 
 }

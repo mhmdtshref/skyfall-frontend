@@ -28,7 +28,9 @@ export class HomeComponent implements OnInit {
   createGameSubmit = (adminName: string) => {
     this.gameService.createGame(adminName)
     .then((data: any) => {
-      const { game } = data;
+      const { game, player } = data;
+      window.localStorage.setItem('game', JSON.stringify(game));
+      window.localStorage.setItem('player', JSON.stringify(player));
       this.router.navigate(['game']);
     })
     .catch((err) => {
