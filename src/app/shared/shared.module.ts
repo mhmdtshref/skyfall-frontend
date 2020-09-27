@@ -14,6 +14,7 @@ import { PopupComponent } from './popup/popup.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { SwitcherComponent } from './switcher/switcher.component';
 
 
 export const HttpLoaderFactory = (http: HttpClient) => {
@@ -21,7 +22,7 @@ export const HttpLoaderFactory = (http: HttpClient) => {
 };
 
 @NgModule({
-  declarations: [ButtonComponent, InputComponent, ListComponent, PopupComponent],
+  declarations: [ButtonComponent, InputComponent, ListComponent, PopupComponent, SwitcherComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -44,6 +45,7 @@ export const HttpLoaderFactory = (http: HttpClient) => {
     ButtonComponent,
     InputComponent,
     ListComponent,
+    SwitcherComponent,
   ],
 })
 export class SharedModule { }

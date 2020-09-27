@@ -1,4 +1,4 @@
-<div>
+<div class="background-color">
     <section [ngSwitch]="isAdmin" class="pt-5">
         <div class="d-flex justify-content-center" *ngSwitchCase="true">
             <spyfall-button type="primary" [text]="adminButtonText" (clickAction)="adminButtonAction()"></spyfall-button>
@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <div class="d-flex justify-content-center pt-5" *ngIf="gameStatus === gameStatusEnum.waiting">
+    <div class="d-flex justify-content-center py-5" *ngIf="gameStatus === gameStatusEnum.waiting">
         <spyfall-button type="warn" [text]="leaveButtonText" (clickAction)="leaveButtonAction()"></spyfall-button>
     </div>
 </div>

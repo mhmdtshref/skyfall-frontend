@@ -1,3 +1,6 @@
 <div class="w-100 app-background-color">
+    <div class="d-flex justify-content-end pr-3 pt-3">
+        <spyfall-switcher (onSwitch)="switchLanguage($event)" [defaultSwitch]="enLanguageSwitchData" [otherSwitch]="arLanguageSwitchData"></spyfall-switcher>
+    </div>
     <router-outlet></router-outlet>
 </div>
