@@ -3,8 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatDialog as MatDialogService } from '@angular/material/dialog';
 import { PopupComponent } from 'src/app/shared/popup/popup.component';
 import { DialogData, Game, Player } from 'src/app/interfaces';
-import { GameService } from 'src/app/shared/services';
-import { Router } from '@angular/router';
+import { GameService, StorageService, NavigationService } from 'src/app/shared/services';
 
 @Component({
   selector: 'spyfall-home',
@@ -18,7 +17,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private dialogService: MatDialogService,
     private gameService: GameService,
-    private router: Router,
+    private storageService: StorageService,
+    private navigationService: NavigationService,
     ) {
     }
 
@@ -29,9 +29,9 @@ export class HomeComponent implements OnInit {
     this.gameService.createGame(adminName)
     .then((data: { game: Game, player: Player }) => {
       const { game, player } = data;
-      this.setGameToLocalStorage(game);
-      this.setPlayerToLocalStorage(player);
-      this.navigateToGame();
+      this.storageService.setGameToLocalStorage(game);
+      this.storageService.setPlayerToLocalStorage(player);
+      this.navigationService.navigateToGame();
     })
     .catch((err) => {
       console.log(err);
@@ -91,25 +91,13 @@ export class HomeComponent implements OnInit {
     this.gameService.joinByCode(code, playerName)
     .then((data: { game: Game, player: Player }) => {
       const { game, player } = data;
-      this.setGameToLocalStorage(game);
-      this.setPlayerToLocalStorage(player);
-      this.navigateToGame();
+      this.storageService.setGameToLocalStorage(game);
+      this.storageService.setPlayerToLocalStorage(player);
+      this.navigationService.navigateToGame();
     })
     .catch((err) => {
       console.log(err);
     });
-  }
-
-  setGameToLocalStorage = (game: Game) => {
-    window.localStorage.setItem('game', JSON.stringify(game));
-  }
-
-  setPlayerToLocalStorage = (player: Player) => {
-    window.localStorage.setItem('player', JSON.stringify(player));
-  }
-
-  navigateToGame = () => {
-    this.router.navigate(['game']);
   }
 
 }

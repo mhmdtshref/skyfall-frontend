@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { MatDialog as MatDialogService } from '@angular/material/dialog';
 import { DialogData, Game, Player } from 'src/app/interfaces';
 import { first } from 'rxjs/operators'
 import { PopupComponent } from 'src/app/shared/popup/popup.component';
-import { GameService } from 'src/app/shared/services';
+import { GameService, StorageService, NavigationService } from 'src/app/shared/services';
 
 @Component({
   selector: 'spyfall-join',
@@ -19,7 +19,8 @@ export class JoinComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private dialogService: MatDialogService,
     private gameService: GameService,
-    private router: Router,
+    private storageService: StorageService,
+    private navigationService: NavigationService,
   ) { }
 
   showJoinPopup = () => {
@@ -35,7 +36,7 @@ export class JoinComponent implements OnInit {
         reject: {
           type: 'basic',
           text: 'pages.join.joinGamePopup.reject',
-          clickAction: this.navigateToHome,
+          clickAction: this.navigationService.navigateToHome,
         },
       },
       input: {
@@ -52,9 +53,9 @@ export class JoinComponent implements OnInit {
     this.gameService.joinByCode(code, playerName)
     .then((data: { game: Game, player: Player }) => {
       const { game, player } = data;
-      this.setGameToLocalStorage(game);
+      this.storageService.setGameToLocalStorage(game);
       this.setPlayerToLocalStorage(player);
-      this.navigateToGame();
+      this.navigationService.navigateToGame();
     })
     .catch((err) => {
       console.log(err);
@@ -67,14 +68,6 @@ export class JoinComponent implements OnInit {
 
   setPlayerToLocalStorage = (player: Player) => {
     window.localStorage.setItem('player', JSON.stringify(player));
-  }
-
-  navigateToGame = () => {
-    this.router.navigate(['game']);
-  }
-
-  navigateToHome = () => {
-    this.router.navigate(['']);
   }
 
   ngOnInit(): void {

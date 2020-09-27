@@ -3,8 +3,7 @@ import { FormControl } from '@angular/forms';
 import { E_GAME_STATUS, T_GAME_STATUS, T_GAME_STATUS_LABEL, E_GAME_STATUS_LABEL } from './game.constants';
 import { Game, Player } from '../../interfaces';
 import { environment } from 'src/environments/environment';
-import { GameService, SocketService } from 'src/app/shared/services';
-import { Router } from '@angular/router';
+import { GameService, NavigationService, SocketService, StorageService } from 'src/app/shared/services';
 
 @Component({
   selector: 'spyfall-game',
@@ -35,7 +34,8 @@ export class GameComponent implements OnInit {
 
   constructor(
     private gameService: GameService,
-    private router: Router,
+    private storageService: StorageService,
+    private navigationService: NavigationService,
   ) { }
 
   adminButtonAction = () => {
@@ -52,26 +52,16 @@ export class GameComponent implements OnInit {
     if(this.isAdmin) {
       this.gameService
       .endGame(this.game.code)
-      .then(this.clearLocalStorage)
-      .then(this.navigateToHome);
+      .then(this.storageService.clearLocalStorage)
+      .then(this.navigationService.navigateToHome);
     } else {
       this.gameService
       .leaveGame(this.game.code, this.player.id)
-      .then(this.clearLocalStorage)
-      .then(this.navigateToHome);
+      .then(this.storageService.clearLocalStorage)
+      .then(this.navigationService.navigateToHome);
     }
   }
 
-  clearLocalStorage = () => {
-    return new Promise(resolve => {
-      window.localStorage.clear();
-      resolve();
-    });
-  }
-
-  navigateToHome = () => {
-    this.router.navigate(['']);
-  }
 
   setUserDetails = (isAdmin: boolean) => {
     if (isAdmin) {
@@ -139,18 +129,10 @@ export class GameComponent implements OnInit {
     this.players = playersList;
   }
 
-  setGameToLocalStorage = (game: Game) => {
-    window.localStorage.setItem('game', JSON.stringify(game));
-  }
-
-  setPlayerToLocalStorage = (player: Player) => {
-    window.localStorage.setItem('player', JSON.stringify(player));
-  }
-
   setListeners = () => {
     SocketService.socket.on('playerJoined', (data: { game: Game }) => {
       const { game } = data;
-      this.setGameToLocalStorage(game);
+      this.storageService.setGameToLocalStorage(game);
       this.setProps();
       this.setPlayers();
     });
@@ -159,8 +141,8 @@ export class GameComponent implements OnInit {
       const { game } = data;
       const player: Player = game.players.find(p => p.id === this.player.id) as Player;
 
-      this.setGameToLocalStorage(game);
-      this.setPlayerToLocalStorage(player);
+      this.storageService.setGameToLocalStorage(game);
+      this.storageService.setPlayerToLocalStorage(player);
 
       this.setProps();
       this.setUserDetails(this.isAdmin);
@@ -168,8 +150,8 @@ export class GameComponent implements OnInit {
     });
 
     SocketService.socket.on('gameEnded', () => {
-      this.clearLocalStorage()
-      .then(this.navigateToHome);
+      this.storageService.clearLocalStorage()
+      .then(this.navigationService.navigateToHome);
     });
   }
 
