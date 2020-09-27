@@ -23,7 +23,7 @@
             <h2 translate>pages.home.joinByCode</h2>
         </div>
         <div class="d-flex justify-content-center">
-            <spyfall-input type="text" placeholder="{{ 'pages.home.codeInput.placeholder' | translate }}" label="{{ 'pages.home.codeInput.label' | translate }}" coltrol="joinCodeControl"></spyfall-input>
+            <spyfall-input type="text" placeholder="{{ 'pages.home.codeInput.placeholder' | translate }}" label="{{ 'pages.home.codeInput.label' | translate }}" [control]="joinCodeControl"></spyfall-input>
         </div>
         <div class="d-flex justify-content-center pt-2">
             <spyfall-button type="primary" text="{{ 'pages.home.join' | translate }}" (clickAction)="onJoinClicked()"></spyfall-button>

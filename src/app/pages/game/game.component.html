@@ -33,11 +33,19 @@
             </div>
         </div>
         <div *ngSwitchCase="gameStatusEnum.started">
-            <div class="d-flex justify-content-center">
-                <h1>Location is:</h1>
+            <div *ngIf="!player.isSpy">
+                <div class="d-flex justify-content-center">
+                    <h1>Location is:</h1>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <h2 class="font-weight-bold"> {{ location }} </h2>
+                </div>
             </div>
-            <div class="d-flex justify-content-center">
-                <h2 class="font-weight-bold"> {{ location }} </h2>
+
+            <div *ngIf="player.isSpy">
+                <div class="d-flex justify-content-center">
+                    <h1>You are the Spy!</h1>
+                </div>
             </div>
         </div>
     </section>
