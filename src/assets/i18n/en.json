@@ -30,6 +30,18 @@
                     "placeholder": "Type here.."
                 }
             }
+        },
+        "join": {
+            "joinGamePopup": {
+                "title": "Join Game",
+                "text": "What is your name?",
+                "confirm": "Join",
+                "reject": "Cancel",
+                "input": {
+                    "label": "Your name",
+                    "placeholder": "Type here.."
+                }
+            }
         }
     },
     "popupDefaults": {

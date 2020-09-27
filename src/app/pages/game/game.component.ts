@@ -130,7 +130,7 @@ export class GameComponent implements OnInit {
     this.gameStatus = game.status;
     this.gameCode = game.code;
 
-    this.linkControl.setValue(`${baseApiUrl}/game/join/${game.code}`);
+    this.linkControl.setValue(`${baseApiUrl}/join/${game.code}`);
   }
 
   setPlayers = () => {

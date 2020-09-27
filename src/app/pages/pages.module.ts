@@ -10,13 +10,14 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { GameComponent } from './game/game.component';
+import { JoinComponent } from './join/join.component';
 
 export const HttpLoaderFactory = (http: HttpClient) => {
   return new TranslateHttpLoader(http);
 };
 
 @NgModule({
-  declarations: [HomeComponent, GameComponent],
+  declarations: [HomeComponent, GameComponent, JoinComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

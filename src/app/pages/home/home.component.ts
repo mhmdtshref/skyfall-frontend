@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatDialog as MatDialogService } from '@angular/material/dialog';
 import { PopupComponent } from 'src/app/shared/popup/popup.component';
 import { DialogData, Game, Player } from 'src/app/interfaces';
-import { GameService, SocketService } from 'src/app/shared/services';
+import { GameService } from 'src/app/shared/services';
 import { Router } from '@angular/router';
 
 @Component({
@@ -63,7 +63,6 @@ export class HomeComponent implements OnInit {
   }
 
   onJoinClicked = () => {
-    console.log('value: ', this.joinCodeControl.value);
     const data: DialogData = {
       title: 'pages.home.joinGamePopup.title',
       text: 'pages.home.joinGamePopup.text',
@@ -89,7 +88,6 @@ export class HomeComponent implements OnInit {
 
   onJoinGameSubmit = (playerName: string) => {
     const code = this.joinCodeControl.value;
-    console.log('CODE: ', code, ' and control: ', this.joinCodeControl);
     this.gameService.joinByCode(code, playerName)
     .then((data: { game: Game, player: Player }) => {
       const { game, player } = data;
