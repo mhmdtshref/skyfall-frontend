@@ -31,6 +31,32 @@
                 }
             }
         },
+        "game": {
+            "code": "الرمز",
+            "link": "الرابط",
+            "players": "اللاعبين",
+            "youAreTheSpy": "أنت الجاسوس",
+            "status": {
+                "waiting": "بانتظار المسؤول",
+                "started": "بدأت اللعبة"
+            },
+            "locationIs": "الموقع هو",
+            "table": {
+                "headers": {
+                    "name": "الإسم"
+                }
+            },
+            "buttons": {
+                "adminButton": {
+                    "start": "إبدأ",
+                    "restart": "إعادة"
+                },
+                "leaveButton": {
+                    "admin": "إنهاء اللعبة",
+                    "player": "مغادرة"
+                }
+            }
+        },
         "join": {
             "joinGamePopup": {
                 "title": "إنضم للعبة",

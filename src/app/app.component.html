@@ -1,5 +1,5 @@
-<div class="w-100 app-background-color">
-    <div class="d-flex justify-content-end pr-3 pt-3">
+<div class="w-100 app-background-color" [ngClass]="{ 'rtl': language === 'ar', 'ltr': language === 'en' }">
+    <div class="d-flex justify-content-end pr-3 pt-3 ltr">
         <spyfall-switcher (onSwitch)="switchLanguage($event)" [defaultSwitch]="enLanguageSwitchData" [otherSwitch]="arLanguageSwitchData"></spyfall-switcher>
     </div>
     <router-outlet></router-outlet>

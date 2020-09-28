@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { E_GAME_STATUS, T_GAME_STATUS, T_GAME_STATUS_LABEL, E_GAME_STATUS_LABEL } from './game.constants';
-import { Game, Player } from '../../interfaces';
-import { environment } from 'src/environments/environment';
+import { Game, GameLocation, Player } from '../../interfaces';
 import { GameService, NavigationService, SocketService, StorageService } from 'src/app/shared/services';
+import { ActivatedRoute } from '@angular/router';
+import { SharedService } from 'src/app/shared/services/shared.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'spyfall-game',
@@ -19,18 +21,18 @@ export class GameComponent implements OnInit {
   game: Game;
   player: Player;
 
-  gameStatusLabel: T_GAME_STATUS_LABEL = E_GAME_STATUS_LABEL.waiting;
+  gameStatusLabel = 'pages.game.status.waiting';
 
-  adminButtonText = 'Start';
+  adminButtonText = 'pages.game.buttons.adminButton.start';
   gameCode = 'XY4B';
   linkControl: FormControl = new FormControl('https://spyfall.com/game/XY4B');
 
   players = [];
-  playersColumnsData = [{ name: 'name', label: 'Name' }];
+  playersColumnsData = [{ name: 'name', label: 'pages.game.table.headers.name' }];
 
   leaveButtonText = 'End';
 
-  location = 'Space X';
+  location: GameLocation;
 
   constructor(
     private gameService: GameService,
@@ -84,43 +86,43 @@ export class GameComponent implements OnInit {
 
   setAdminButtonsText = (status: T_GAME_STATUS) => {
     if (status === E_GAME_STATUS.started) {
-      this.adminButtonText = 'Restart';
+      this.adminButtonText = 'pages.game.buttons.adminButton.restart';
     } else {
       this.gameStatus = E_GAME_STATUS.waiting;
-      this.adminButtonText = 'Start';
+      this.adminButtonText = 'pages.game.buttons.adminButton.start';
     }
-    this.leaveButtonText = 'End';
+    this.leaveButtonText = 'pages.game.buttons.leaveButton.admin';
   }
 
   setPlayerButtonsText = (status: T_GAME_STATUS) => {
     if (status === E_GAME_STATUS.waiting) {
-      this.leaveButtonText = 'Leave';
+      this.leaveButtonText = 'pages.game.buttons.leaveButton.admin';
     } else {
-      this.leaveButtonText = null;
+      this.leaveButtonText = '';
     }
   }
 
   setPlayerHeaderTexts = (status: T_GAME_STATUS) => {
     if (status === E_GAME_STATUS.started) {
-      this.gameStatusLabel = E_GAME_STATUS_LABEL.started;
+      this.gameStatusLabel = 'pages.game.status.started';
     } else {
       this.gameStatus = E_GAME_STATUS.waiting;
-      this.gameStatusLabel = E_GAME_STATUS_LABEL.waiting;
+      this.gameStatusLabel = 'pages.game.status.waiting';
     }
   }
 
   setProps = () => {
     const game: Game = JSON.parse(window.localStorage.getItem('game')) as Game;
     const player: Player = JSON.parse(window.localStorage.getItem('player')) as Player;
-    const { baseApiUrl } = environment;
 
     this.game = game;
     this.player = player;
     this.isAdmin = game.adminId === player.id;
     this.gameStatus = game.status;
     this.gameCode = game.code;
+    this.location = this.game.location;
 
-    this.linkControl.setValue(`${baseApiUrl}/join/${game.code}`);
+    this.linkControl.setValue(`${location.origin}/join/${game.code}`);
   }
 
   setPlayers = () => {
@@ -160,6 +162,10 @@ export class GameComponent implements OnInit {
     this.setUserDetails(this.isAdmin);
     this.setPlayers();
     this.setListeners();
+  }
+
+  get locationText() {
+    return this.location[SharedService.language];
   }
 
 }

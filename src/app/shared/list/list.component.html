@@ -2,8 +2,8 @@
     <mat-table [dataSource]="data" class="mat-elevation-z8">
         <!-- Position Column -->
         <ng-container *ngFor="let column of columnsData" [matColumnDef]="column.name">
-          <mat-header-cell *matHeaderCellDef> {{column.label}} </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element[column.name]}} </mat-cell>
+          <mat-header-cell *matHeaderCellDef> {{ column.label | translate }} </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element[column.name] }} </mat-cell>
         </ng-container>
       
         <mat-header-row *matHeaderRowDef="columnsNames"></mat-header-row>
