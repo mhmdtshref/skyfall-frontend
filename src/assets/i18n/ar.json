@@ -1,4 +1,86 @@
 {
     "title": "الجاسوس",
-    "intro": "أقبض على الجاسوس!"
+    "pages": {
+        "home": {
+            "createGame": "إنشاء لعبة",
+            "or": "أو",
+            "joinByCode": "انضم باستخدام رمز",
+            "codeInput": {
+                "placeholder": "أكتب الرمز..",
+                "label": "رمز الإنضمام"
+            },
+            "join": "إنضمام",
+            "createGamePopup": {
+                "title": "إنشاء لعبة",
+                "text": "ما إسمك؟",
+                "confirm": "أنشئ",
+                "reject": "عودة",
+                "input": {
+                    "label": "إسمك",
+                    "placeholder": "أكتب هنا.."
+                }
+            },
+            "joinGamePopup": {
+                "title": "الإنضمام باستخدام رمز",
+                "text": "ما اسمك؟",
+                "confirm": "إنضمام",
+                "reject": "عودة",
+                "input": {
+                    "label": "إسمك",
+                    "placeholder": "أكتب هنا.."
+                }
+            }
+        },
+        "game": {
+            "code": "الرمز",
+            "link": "الرابط",
+            "players": "اللاعبين",
+            "youAreTheSpy": "أنت الجاسوس",
+            "status": {
+                "waiting": "بانتظار المسؤول",
+                "started": "بدأت اللعبة"
+            },
+            "locationIs": "الموقع هو",
+            "table": {
+                "headers": {
+                    "name": "الإسم",
+                    "status": "الحالة"
+                }
+            },
+            "buttons": {
+                "adminButton": {
+                    "start": "إبدأ",
+                    "restart": "إعادة"
+                },
+                "leaveButton": {
+                    "admin": "إنهاء اللعبة",
+                    "player": "مغادرة"
+                }
+            }
+        },
+        "join": {
+            "joinGamePopup": {
+                "title": "إنضم للعبة",
+                "text": "ما اسمك؟",
+                "confirm": "إنضمام",
+                "reject": "إلغاء",
+                "input": {
+                    "label": "إسمك",
+                    "placeholder": "أكتب هنا.."
+                }
+            }
+        }
+    },
+    "popupDefaults": {
+        "title": "قبول",
+        "text": "هل أنت متأكد؟",
+        "buttons": {
+            "confirm": {
+                "text": "إرسال"
+            },
+            "reject": {
+                "text": "عودة"
+            }
+        }
+    }
 }

@@ -9,4 +9,5 @@ export interface Player {
     name: string;
     gameId: number;
     isSpy?: boolean;
+    isActive: boolean;
 }

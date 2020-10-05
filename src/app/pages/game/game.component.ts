@@ -27,7 +27,7 @@ export class GameComponent implements OnInit {
   linkControl: FormControl = new FormControl('https://spyfall.com/game/XY4B');
 
   players = [];
-  playersColumnsData = [{ name: 'name', label: 'Name' }];
+  playersColumnsData = [{ name: 'name', label: 'pages.game.table.headers.name' }, { name: 'isActive', label: 'pages.game.table.headers.status' }];
 
   leaveButtonText = 'End';
 
@@ -135,7 +135,7 @@ export class GameComponent implements OnInit {
 
   setPlayers = () => {
     const { players } = this.game;
-    const playersList = players.map(player => ({ name: player.name }));
+    const playersList = players.map(player => ({ name: player.name, isActive: player.isActive ? 'Connected' : 'Disconnected' }));
     this.players = playersList;
   }
 
