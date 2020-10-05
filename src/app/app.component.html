@@ -1,4 +1,4 @@
-<div class="w-100 h-100 app-background-color" [ngClass]="{ 'rtl': language === 'ar', 'ltr': language === 'en' }">
+<div class="w-100 h-100 app-background-color min-height" [ngClass]="{ 'rtl': language === 'ar', 'ltr': language === 'en' }">
     <div class="d-flex justify-content-end pr-3 pt-3 ltr">
         <spyfall-switcher (onSwitch)="switchLanguage($event)" [defaultSwitch]="enLanguageSwitchData" [otherSwitch]="arLanguageSwitchData"></spyfall-switcher>
     </div>
