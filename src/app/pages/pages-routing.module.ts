@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { GameComponent } from './game/game.component';
+import { JoinComponent } from './join/join.component';
 
 const routes: Routes = [
     {
@@ -11,6 +12,10 @@ const routes: Routes = [
     {
       path: 'game',
       component: GameComponent,
+    },
+    {
+      path: 'join/:code',
+      component: JoinComponent,
     },
 ];
 

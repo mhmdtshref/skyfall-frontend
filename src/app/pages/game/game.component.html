@@ -1,33 +1,32 @@
-<div>
+<div class="background-color">
     <section [ngSwitch]="isAdmin" class="pt-5">
         <div class="d-flex justify-content-center" *ngSwitchCase="true">
-            <spyfall-button type="primary" [text]="adminButtonText" (clickAction)="adminButtonAction()"></spyfall-button>
+            <spyfall-button type="primary" text="{{ adminButtonText | translate }}" (clickAction)="adminButtonAction()"></spyfall-button>
         </div>
         <div *ngSwitchCase="false" class="d-flex justify-content-center">
-            <h1>{{ gameStatusLabel }}</h1>
+            <h1>{{ gameStatusLabel | translate }}</h1>
         </div>
-        
     </section>
     
     <section [ngSwitch]="gameStatus" class="pt-5 px-3">
         <div *ngSwitchCase="gameStatusEnum.waiting">
-            <div class="d-flex justify-content-start row col-12">
-                <div class="pl-3">
+            <div class="d-flex justify-content-start row col-12 mx-1">
+                <div>
                     <div>
-                        <h1>Code:</h1>
+                        <h1> {{ 'pages.game.code' | translate }}: </h1>
                     </div>
                 </div>
-                <div class="pl-3">
+                <div class="px-3">
                     <h1>{{ gameCode }}</h1>
                 </div>
             </div>
-            <div class="d-flex justify-content-start row col-12">
-                <div class="pl-3">
+            <div class="d-flex justify-content-start row col-12 mx-1">
+                <div>
                     <div>
-                        <h1 class="pt-2 m-0">Link:</h1>
+                        <h1 class="pt-2 m-0">{{ 'pages.game.link' | translate }}:</h1>
                     </div>
                 </div>
-                <div class="pl-3">
+                <div class="px-3">
                     <spyfall-input placeholder="" [control]="linkControl" type="text" [readonly]="true" [copyAbility]="true"></spyfall-input>
                 </div>
             </div>
@@ -35,16 +34,16 @@
         <div *ngSwitchCase="gameStatusEnum.started">
             <div *ngIf="!player.isSpy">
                 <div class="d-flex justify-content-center">
-                    <h1>Location is:</h1>
+                    <h1>{{ 'pages.game.locationIs' | translate }}:</h1>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <h2 class="font-weight-bold"> {{ location }} </h2>
+                    <h2 class="font-weight-bold"> {{ locationText | titlecase }} </h2>
                 </div>
             </div>
 
             <div *ngIf="player.isSpy">
                 <div class="d-flex justify-content-center">
-                    <h1>You are the Spy!</h1>
+                    <h1> {{ 'pages.game.youAreTheSpy' | translate }} </h1>
                 </div>
             </div>
         </div>
@@ -52,14 +51,14 @@
 
     <div class="px-3">
         <div class="px-3 pt-4">
-            <h1>Players:</h1>
+            <h1 class="players-table-title">{{ 'pages.game.players' | translate }}:</h1>
         </div>
         <div>
             <spyfall-list [columnsData]="playersColumnsData" [data]="players"></spyfall-list>
         </div>
     </div>
 
-    <div class="d-flex justify-content-center pt-5" *ngIf="gameStatus === gameStatusEnum.waiting">
-        <spyfall-button type="warn" [text]="leaveButtonText" (clickAction)="leaveButtonAction()"></spyfall-button>
+    <div class="d-flex justify-content-center py-5" *ngIf="gameStatus === gameStatusEnum.waiting">
+        <spyfall-button type="warn" text="{{ leaveButtonText | translate }}" (clickAction)="leaveButtonAction()"></spyfall-button>
     </div>
 </div>

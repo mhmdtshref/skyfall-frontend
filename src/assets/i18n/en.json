@@ -30,6 +30,44 @@
                     "placeholder": "Type here.."
                 }
             }
+        },
+        "game": {
+            "code": "Code",
+            "link": "Link",
+            "players": "Players",
+            "youAreTheSpy": "You are the spy",
+            "status": {
+                "waiting": "Waiting admin",
+                "started": "Started"
+            },
+            "locationIs": "Location is",
+            "table": {
+                "headers": {
+                    "name": "Name"
+                }
+            },
+            "buttons": {
+                "adminButton": {
+                    "start": "Start",
+                    "restart": "Restart"
+                },
+                "leaveButton": {
+                    "admin": "End",
+                    "player": "Leave"
+                }
+            }
+        },
+        "join": {
+            "joinGamePopup": {
+                "title": "Join Game",
+                "text": "What is your name?",
+                "confirm": "Join",
+                "reject": "Cancel",
+                "input": {
+                    "label": "Your name",
+                    "placeholder": "Type here.."
+                }
+            }
         }
     },
     "popupDefaults": {

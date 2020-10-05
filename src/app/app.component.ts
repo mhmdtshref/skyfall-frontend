@@ -13,6 +13,10 @@ import { environment } from 'src/environments/environment';
 export class AppComponent {
   title = 'spyfall-frontend';
 
+  enLanguageSwitchData = { text: 'English', iconName: 'united-kingdom.png', value: 'en' };
+  arLanguageSwitchData = { text: 'العربية', iconName: 'palestine.png', value: 'ar' };
+  language: string = 'en';
+
   constructor(private translateService: TranslateService) {
     SharedService.language = 'en';
     translateService.setDefaultLang(SharedService.language);
@@ -20,7 +24,13 @@ export class AppComponent {
   }
 
   updateLanguage = () => {
+    this.language = SharedService.language;
     this.translateService.use(SharedService.language);
+  }
+
+  switchLanguage = (language: string) => {
+    SharedService.language = language;
+    this.updateLanguage();
   }
 
 }
