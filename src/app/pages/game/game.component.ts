@@ -96,7 +96,7 @@ export class GameComponent implements OnInit {
 
   setPlayerButtonsText = (status: T_GAME_STATUS) => {
     if (status === E_GAME_STATUS.waiting) {
-      this.leaveButtonText = 'pages.game.buttons.leaveButton.admin';
+      this.leaveButtonText = 'pages.game.buttons.leaveButton.player';
     } else {
       this.leaveButtonText = '';
     }
