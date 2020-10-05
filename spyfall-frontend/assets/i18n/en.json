@@ -1,0 +1,47 @@
+{
+    "title": "Spy Fall",
+    "pages": {
+        "home": {
+            "createGame": "Create Game",
+            "or": "Or",
+            "joinByCode": "Join by Code",
+            "codeInput": {
+                "placeholder": "Type code..",
+                "label": "Joining Code"
+            },
+            "join": "Join",
+            "createGamePopup": {
+                "title": "Create Game",
+                "text": "What is your name?",
+                "confirm": "Create",
+                "reject": "Back",
+                "input": {
+                    "label": "Your name",
+                    "placeholder": "Type here.."
+                }
+            },
+            "joinGamePopup": {
+                "title": "Join Game",
+                "text": "What is your name?",
+                "confirm": "Join",
+                "reject": "Back",
+                "input": {
+                    "label": "Your name",
+                    "placeholder": "Type here.."
+                }
+            }
+        }
+    },
+    "popupDefaults": {
+        "title": "Confirm",
+        "text": "Are you sure?",
+        "buttons": {
+            "confirm": {
+                "text": "Submit"
+            },
+            "reject": {
+                "text": "Back"
+            }
+        }
+    }
+}
